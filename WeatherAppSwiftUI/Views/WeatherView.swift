@@ -63,17 +63,14 @@ struct WeatherView: View {
                     }
                 }.padding()
             }
+            .background(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
+            .foregroundColor(.white)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     
                     Button{} label: {
                         Label("Search", systemImage: "magnifyingglass")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    
-                    Button{} label: {
-                        Label("Settings", systemImage: "gearshape")
+                            .foregroundColor(.white)
                     }
                 }
             }

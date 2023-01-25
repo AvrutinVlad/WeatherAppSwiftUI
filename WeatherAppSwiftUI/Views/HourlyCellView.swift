@@ -10,7 +10,7 @@ import SwiftUI
 struct HourlyCellView: View {
     
     @State var hourly = "time"
-    @State var temp = "25°C"
+    @State var temp = "25"
     @State var hourlyIcon = "sun.max.fill"
     
     var body: some View {
@@ -19,7 +19,7 @@ struct HourlyCellView: View {
                 .font(.system(size: 20))
             Image(systemName: "\(hourlyIcon)")
                 .font(.system(size: 25))
-            Text("\(temp)")
+            Text("\(temp)°C")
         }
     }
 }
