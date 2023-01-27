@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DayWeatherView: View {
+struct DayWeatherCellView: View {
     
     @State var date = "24.01"
     @State var dayWeatherIcon = "sun.max.fill"
@@ -26,6 +26,6 @@ struct DayWeatherView: View {
 
 struct DayWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        DayWeatherView()
+        DayWeatherCellView()
     }
 }

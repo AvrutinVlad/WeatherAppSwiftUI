@@ -9,8 +9,11 @@ import SwiftUI
 
 struct WeatherView: View {
     
-    @State var humidity: String = ""
-    @State var windSpeed: String = ""
+    @State var weatherViewModel = WeatherViewModel()
+    @State var city = ""
+    @State var curentTemp = ""
+    @State var windSpeed = ""
+    @State var rain = ""
     
     var body: some View {
         
@@ -18,30 +21,28 @@ struct WeatherView: View {
             
             VStack {
                 Spacer()
-                Text("cityName")
+                Text(city)
                     .font(.largeTitle)
                 Spacer()
                 HStack {
-                    Text("25°C")
+                    Text("\(curentTemp)°C")
                         .font(.system(size: 70))
                         .bold()
                         .padding(.horizontal)
-                    Label("", systemImage: "sun.max.fill")
-                        .font(.system(size: 40))
                 }
                 HStack {
                     VStack {
                         Label("", systemImage: "wind")
                             .padding()
                             .font(.system(size: 25))
-                        Text("23 m/s")
+                        Text("\(windSpeed) m/s")
                     }
                     
                     VStack {
                         Label("", systemImage: "humidity")
                             .padding()
                             .font(.system(size: 25))
-                        Text("30 mm")
+                        Text("\(rain) mm")
                     }
                 }
                 
@@ -59,9 +60,10 @@ struct WeatherView: View {
                 
                 HStack(spacing: 20) {
                     ForEach(0..<5) { index in
-                        DayWeatherView()
+                        DayWeatherCellView()
                     }
                 }.padding()
+                
             }
             .background(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
             .foregroundColor(.white)
@@ -76,6 +78,7 @@ struct WeatherView: View {
             }
         }
     }
+  
 }
 
 struct ContentView_Previews: PreviewProvider {

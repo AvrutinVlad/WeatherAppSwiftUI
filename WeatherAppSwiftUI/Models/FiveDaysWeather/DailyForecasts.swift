@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DailyForecasts {
+struct DailyForecasts: Decodable {
     
     let date: Date
     let temperature: Temperature
