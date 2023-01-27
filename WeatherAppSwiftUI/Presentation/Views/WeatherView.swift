@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct WeatherView: View {
-    
-    @State var weatherViewModel = WeatherViewModel()
-    @State var city = ""
-    @State var curentTemp = ""
-    @State var windSpeed = ""
-    @State var rain = ""
+    private static let apiKey = "990b0166a268ed567ec4e6246f5fd7f5"
     
     var body: some View {
         
@@ -21,49 +16,46 @@ struct WeatherView: View {
             
             VStack {
                 Spacer()
-                Text(city)
+                Text("cityName")
                     .font(.largeTitle)
                 Spacer()
                 HStack {
-                    Text("\(curentTemp)°C")
+                    Label("25°", systemImage: "sun.max.fill")
                         .font(.system(size: 70))
                         .bold()
                         .padding(.horizontal)
-                }
+                } .padding()
                 HStack {
-                    VStack {
-                        Label("", systemImage: "wind")
-                            .padding()
-                            .font(.system(size: 25))
-                        Text("\(windSpeed) m/s")
+                    Text("Ощущается как")
+                    Text("22°C")
+                } .padding(.bottom)
+
+                HStack {
+                    VStack(alignment: .leading) {
+                        Label("1022 мм рт.ст.", systemImage: "speedometer")
+                        Label("56 %", systemImage: "humidity")
+                        Label("4 м/с", systemImage: "wind")
                     }
-                    
-                    VStack {
-                        Label("", systemImage: "humidity")
-                            .padding()
-                            .font(.system(size: 25))
-                        Text("\(rain) mm")
+                    .padding()
+                    .font(.system(size: 19))
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(0..<24) { index in
+                                HourlyCellView()
+                            }
+                        }
                     }
                 }
                 
-                Spacer()
-                
-                ScrollView(.horizontal) {
-                    HStack(spacing: 25) {
-                        ForEach(0..<12) { index in
-                            HourlyCellView()
+                ScrollView(.vertical) {
+                    VStack(spacing: -40){
+                        ForEach(0..<5) { index in
+                            DayWeatherCellView()
                         }
-                    }.padding()
-                }.frame(height: 100)
-                
-                Spacer()
-                
-                HStack(spacing: 20) {
-                    ForEach(0..<5) { index in
-                        DayWeatherCellView()
                     }
-                }.padding()
+                } .padding()
                 
+              Spacer()
             }
             .background(LinearGradient(gradient: Gradient(colors: [Color("darkBlue"), Color("lightBlue")]), startPoint: .top, endPoint: .bottom))
             .foregroundColor(.white)

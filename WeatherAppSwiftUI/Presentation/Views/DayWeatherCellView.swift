@@ -9,18 +9,37 @@ import SwiftUI
 
 struct DayWeatherCellView: View {
     
-    @State var date = "24.01"
-    @State var dayWeatherIcon = "sun.max.fill"
-    @State var dayTemp = "23"
+    var date = "24.01"
+    var dayWeatherIcon = "sun.max.fill"
+    var minTemp = "23"
+    var maxTemp = "25"
+    
     
     var body: some View {
-        VStack {
-            Text("\(date)")
-                .font(.system(size: 20))
-            Image(systemName: "\(dayWeatherIcon)")
-                .font(.system(size: 25))
-            Text("\(dayTemp)°C")
+        HStack{
+            VStack {
+                Text("\(date)")
+                    .font(.system(size: 20))
+                Text("Today")
+             
+            }
+            Spacer()
+            HStack {
+                Image(systemName: "\(dayWeatherIcon)")
+                    .font(.system(size: 25))
+                VStack{
+                    Text("Min")
+                    Text("\(minTemp)°C")
+                } .padding()
+                
+                VStack {
+                    Text("Max")
+                    Text("\(maxTemp)°C")
+                }
+            }
+            
         }
+        .padding()
     }
 }
 
