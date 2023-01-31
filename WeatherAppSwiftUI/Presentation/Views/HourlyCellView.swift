@@ -9,9 +9,9 @@ import SwiftUI
 
 struct HourlyCellView: View {
     
-     var hourly = "time"
-     var temp = "25"
-     var hourlyIcon = "sun.max.fill"
+    @State var hourly = "time"
+    @State var temp = "25"
+    @State var hourlyIcon = "sun.max.fill"
     
     var body: some View {
         VStack {
